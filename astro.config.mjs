@@ -13,14 +13,14 @@ const site = (process.env.SITE || 'https://devoxx.gr').replace(/^http:\/\//, 'ht
 // Addresses of the old WordPress site, sent to the closest page of this one.
 const moved = {
   '/press-kit-2/': '/press-kit/',
-  '/register/': '/#tickets',
-  '/tickets/': '/#tickets',
+  '/register/': '/tickets/',
+  '/cfp/': '/call-for-papers/',
   '/venue/': '/#venue',
   '/sponsors/': '/#sponsors',
   '/tracks/': '/#tracks',
   '/program-committee/': '/team/',
   '/practical-tips-info/': '/faq/',
-  '/info-for-speakers/': '/faq/',
+  '/info-for-speakers/': '/call-for-papers/',
   '/speakers/': '/',
   '/talk/': '/',
   '/schedule/': '/',

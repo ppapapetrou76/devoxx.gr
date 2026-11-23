@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import TicketTiers from '../components/TicketTiers.astro';
+import site from '../data/site.json';
+import home from '../data/home.json';
+import { url, withVat } from '../lib.js';
+
+const e = site.event;
+const { tiers, vat } = home.tickets;
+const ticketDates = home.dates.filter((d) => /ticket|registration|Devoxx Greece/i.test(d.what));
+---
+<Base
+  title="Tickets"
+  current="Tickets"
+  description={`Tickets for ${site.name}, ${e.dates} in Athens: three batches from €${tiers[0].price} + VAT, what every ticket includes, and how teams can buy.`}
+>
+  <section class="section">
+    <div class="container">
+      <SectionTitle caption={`${e.dates} · ${e.venueShort}`} title="Tickets" level="h1" />
+      <div class="prose">
+        <p>One ticket covers all three days of {site.name}. Tickets are sold in three batches, and each batch costs more than the one before, so the earlier you buy, the less you pay.</p>
+        <p>Prices exclude Greek VAT at {vat}%, which is charged to every attendee, including those travelling from abroad.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <TicketTiers />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle caption="What you pay" title="Prices with VAT" />
+      <div class="prose">
+        <table class="price-table">
+          <thead><tr><th>Ticket</th><th>On sale</th><th>Price</th><th>With {vat}% VAT</th></tr></thead>
+          <tbody>
+            {tiers.map((t) => (
+              <tr><td>{t.name}</td><td>{t.status}</td><td>€{t.price}</td><td>€{withVat(t.price, vat)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h2>Buying for your team</h2>
+        <p>Companies can pay by bank transfer, and a VAT invoice or receipt is issued for every ticket. Student and group discounts are available with the Standard ticket: write to <a href={`mailto:${site.contact.general}`}>{site.contact.general}</a> for details.</p>
+
+        <h2>Cancellations and name changes</h2>
+        <p>Cancellations, refunds and passing your ticket to a colleague are covered in the <a href={url('/terms-of-participation/')}>Terms of Participation</a>.</p>
+
+        <h2>Speaking at Devoxx Greece?</h2>
+        <p>Speakers get a 3-day pass when one of their sessions is accepted, so there is no need to buy a ticket. See the <a href={url('/call-for-papers/')}>Call for Papers</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <SectionTitle caption="Save the dates" title="Key dates" />
+      <ol class="timeline">
+        {ticketDates.map((d) => (
+          <li class:list={{ done: d.done }}>
+            <strong>{d.when}</strong>
+            <span>{d.what}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="btn-row tickets-cta"><a class="btn btn-gold" href={e.tickets} target="_blank" rel="noopener">Buy tickets on Eventora</a> <a class="btn btn-ink" href={e.newsletter} target="_blank" rel="noopener">Get an email when each batch opens</a></p>
+    </div>
+  </section>
+</Base>
