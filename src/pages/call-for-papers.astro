@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import site from '../data/site.json';
+import home from '../data/home.json';
+
+const e = site.event;
+// Keynotes are not submitted through the CFP.
+const formats = home.sessions.filter((s) => s.name !== 'Keynotes');
+const open = new Date(e.cfpCloses) > new Date();
+---
+<Base
+  title="Call for Papers"
+  current="CFP"
+  description={`Speak at ${site.name} in Athens, ${e.dates}: session formats, the nine tracks, what speakers get and how to submit a talk.`}
+>
+  <section class="section">
+    <div class="container">
+      <SectionTitle caption={`Speak at ${site.name}`} title="Call for Papers" level="h1" />
+      <div class="cfp-status" data-closes={e.cfpCloses}>
+        <div class="cfp-open" hidden={!open}>
+          <p><strong>The Call for Papers is open until {e.cfpClosesLabel}.</strong> Submit a talk, a hands-on lab or a deep dive on any of the nine tracks below.</p>
+          <a class="btn btn-gold" href={e.cfp} target="_blank" rel="noopener">Submit a talk</a>
+        </div>
+        <div class="cfp-closed" hidden={open}>
+          <p><strong>The Call for Papers for {site.name} is closed.</strong> The first speakers are announced in mid-December. Subscribe to hear when the program and the next Call for Papers open.</p>
+          <a class="btn btn-gold" href={e.newsletter} target="_blank" rel="noopener">Subscribe to updates</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-grey">
+    <div class="container">
+      <SectionTitle caption="What you can submit" title="Session formats" />
+      <ul class="card-grid">
+        {formats.map((s) => (
+          <li class="card card-grey">
+            <h3>{s.name}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle caption={site.name} title="Tracks" />
+      <ul class="card-grid">
+        {home.tracks.map((t) => (
+          <li class="card">
+            <h3>{t.name}</h3>
+            <p>{t.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <SectionTitle caption="For speakers" title="What you get" />
+      <div class="prose">
+        <ul>
+          <li>A 3-day pass to {site.name} when one or more of your sessions is accepted.</li>
+          <li>Conference talks and Deep Dives are recorded, so your session reaches people who could not be in the room.</li>
+          <li>Three days with {site.stats.find((s) => s[1] === 'Attendees')?.[0] ?? 'over a thousand'} developers at the {e.venue}.</li>
+        </ul>
+      </div>
+      <SectionTitle caption="Save the dates" title="Key dates" />
+      <ol class="timeline">
+        {home.dates.map((d) => (
+          <li class:list={{ done: d.done }}>
+            <strong>{d.when}</strong>
+            <span>{d.what}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <script is:inline>
+    // The site is static: switch to the "closed" message once the closing date has passed.
+    (function () {
+      var box = document.querySelector('[data-closes]');
+      if (!box || new Date(box.getAttribute('data-closes')) > new Date()) return;
+      box.querySelector('.cfp-open').hidden = true;
+      box.querySelector('.cfp-closed').hidden = false;
+    })();
+  </script>
+</Base>

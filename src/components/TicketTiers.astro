@@ -1,0 +1,25 @@
+---
+// The three ticket batches, used on the homepage and the Tickets page.
+import site from '../data/site.json';
+import home from '../data/home.json';
+---
+<ul class="tiers">
+  {home.tickets.tiers.map((t) => (
+    <li class:list={['tier', `is-${t.state}`]}>
+      <div class="tier-head">
+        <span class="tier-status">{t.status}</span>
+        <h3>{t.name}</h3>
+        <p>{t.caption}</p>
+      </div>
+      <div class="tier-body">
+        <p class="tier-price"><span>EUR</span> <b>{t.price}</b> <span>+ VAT</span></p>
+        <ul class="checks">
+          {[...home.tickets.common, ...t.extra].map((f) => <li>{f}</li>)}
+        </ul>
+        {t.state === 'on-sale'
+          ? <a class="btn btn-gold btn-block" href={site.event.tickets} target="_blank" rel="noopener">{t.cta}</a>
+          : <span class="btn btn-disabled btn-block" aria-disabled="true">{t.cta}</span>}
+      </div>
+    </li>
+  ))}
+</ul>

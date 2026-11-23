@@ -162,6 +162,7 @@
   },
   "tickets": {
     "background": "/images/hero-2.webp",
+    "vat": 24,
     "common": [
       "Access to all days of the main event (April 15th to 17th, 2027)",
       "Coffee, snacks and light lunch on all days",
@@ -180,7 +181,8 @@
           "Only 100 tickets available",
           "No refund"
         ],
-        "cta": "Join now!"
+        "cta": "Join now!",
+        "validFrom": "2026-10-15"
       },
       {
         "name": "Early Bird",
@@ -204,7 +206,8 @@
           "Student and Group discounts available",
           "No refund"
         ],
-        "cta": "Opens 23 January"
+        "cta": "Opens 23 January",
+        "validFrom": "2027-01-23"
       }
     ]
   },

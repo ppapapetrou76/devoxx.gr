@@ -18,7 +18,9 @@
     "map": "https://goo.gl/maps/suSXcPpRATz1eRQr6",
     "tickets": "https://www.eventora.com/en/Events/devoxx-greece-27",
     "cfp": "https://dvgr27.cfp.dev/",
-    "newsletter": "https://eepurl.com/hXlPAL"
+    "newsletter": "https://eepurl.com/hXlPAL",
+    "cfpCloses": "2026-11-30T23:59:59+02:00",
+    "cfpClosesLabel": "30 November 2026"
   },
   "announcement": {
     "text": "Super Early tickets are on sale: only 100 available",
@@ -57,7 +59,7 @@
     },
     {
       "label": "Tickets",
-      "href": "/#tickets"
+      "href": "/tickets/"
     },
     {
       "label": "Venue",
@@ -73,7 +75,7 @@
     },
     {
       "label": "CFP",
-      "href": "https://dvgr27.cfp.dev/"
+      "href": "/call-for-papers/"
     },
     {
       "label": "FAQ",
@@ -86,7 +88,7 @@
       "links": [
         {
           "label": "Tickets",
-          "href": "/#tickets"
+          "href": "/tickets/"
         },
         {
           "label": "Tracks",
@@ -106,7 +108,7 @@
         },
         {
           "label": "Call for Papers",
-          "href": "https://dvgr27.cfp.dev/"
+          "href": "/call-for-papers/"
         }
       ]
     },
