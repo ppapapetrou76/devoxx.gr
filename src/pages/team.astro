@@ -12,7 +12,7 @@ import { url } from '../lib.js';
       <ul class="bios">
         {committee.map((m) => (
           <li class="card bio">
-            <img src={url(m.photo)} alt="" width="110" height="110" loading="lazy" />
+            <img src={url(m.photo)} alt={m.name} width="110" height="110" loading="lazy" />
             <div>
               <h2>{m.name}</h2>
               <p class="caption">{m.title}</p>

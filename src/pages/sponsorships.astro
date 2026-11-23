@@ -4,7 +4,12 @@ import SectionTitle from '../components/SectionTitle.astro';
 import { url } from '../lib.js';
 
 const levels = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze'];
-const photos = [1, 2, 3, 4].map((n) => `/images/sponsorships/hall-${n}.jpg`);
+const photos = [
+  'Attendees filling the sponsor hall at Devoxx Greece',
+  'The sponsor hall at the Megaron during a break',
+  'Attendees talking in the sponsor area',
+  'A crowded sponsor hall between sessions',
+].map((alt, i) => ({ src: `/images/sponsorships/hall-${i + 1}.jpg`, alt }));
 ---
 <Base title="Sponsorships" current="Sponsors" description="Sponsor Devoxx Greece 2027: packages, booths and how to get involved.">
   <section class="section">
@@ -24,7 +29,7 @@ const photos = [1, 2, 3, 4].map((n) => `/images/sponsorships/hall-${n}.jpg`);
         {levels.map((l) => <li>{l}</li>)}
       </ul>
       <ul class="gallery">
-        {photos.map((p) => <li><img src={url(p)} alt="" loading="lazy" /></li>)}
+        {photos.map((p) => <li><img src={url(p.src)} alt={p.alt} loading="lazy" /></li>)}
       </ul>
     </div>
   </section>

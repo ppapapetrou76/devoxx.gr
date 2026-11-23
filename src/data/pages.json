@@ -1,26 +1,32 @@
 {
   "faq": {
     "title": "Frequently Asked Questions",
-    "caption": "Useful info"
+    "caption": "Useful info",
+    "description": "Answers about Devoxx Greece 2027: dates, tickets, session types, speaker passes, the schedule and how to register."
   },
   "code-of-conduct": {
     "title": "Code of Conduct",
-    "caption": "Useful info"
+    "caption": "Useful info",
+    "description": "The Devoxx Greece code of conduct: the behaviour expected from attendees, speakers, sponsors and volunteers, and how to report a problem."
   },
   "terms-of-participation": {
     "title": "Terms of Participation",
-    "caption": "Useful info"
+    "caption": "Useful info",
+    "description": "Terms of participation for Devoxx Greece 2027: ticket fees, VAT, payment, cancellations and refunds."
   },
   "privacy-policy": {
     "title": "Privacy Policy",
-    "caption": "Useful info"
+    "caption": "Useful info",
+    "description": "How Devoxx Greece and SoftConf collect, use and protect personal data from attendees, speakers and website visitors."
   },
   "cookie-consent": {
     "title": "Cookie Consent",
-    "caption": "Useful info"
+    "caption": "Useful info",
+    "description": "Which cookies the Devoxx Greece website uses and how to manage them."
   },
   "logos": {
     "title": "Devoxx Logos",
-    "caption": "Press"
+    "caption": "Press",
+    "description": "Devoxx Greece logos for press, partners and sponsors."
   }
 }

@@ -16,7 +16,7 @@ const { slug } = Astro.params;
 const html = withBase(files[`../content/pages/${slug}.html`]);
 const page = pages[slug] ?? { title: slug };
 ---
-<Base title={page.title} current={slug === 'faq' ? 'FAQ' : ''}>
+<Base title={page.title} description={page.description} current={slug === 'faq' ? 'FAQ' : ''}>
   <section class="section">
     <div class="container">
       <SectionTitle caption={page.caption} title={page.title} level="h1" />

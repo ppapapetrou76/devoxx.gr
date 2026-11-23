@@ -90,12 +90,30 @@
     }
   ],
   "photos": [
-    "/images/atmosphere/fireside-talk.jpg",
-    "/images/atmosphere/arrivals.jpg",
-    "/images/atmosphere/attendee.jpg",
-    "/images/atmosphere/speakers-on-stage.jpg",
-    "/images/atmosphere/hallway.jpg",
-    "/images/hero-3.jpg"
+    {
+      "src": "/images/atmosphere/fireside-talk.jpg",
+      "alt": "Two speakers in conversation on stage at Devoxx Greece"
+    },
+    {
+      "src": "/images/atmosphere/arrivals.jpg",
+      "alt": "Attendees arriving at the Megaron for Devoxx Greece"
+    },
+    {
+      "src": "/images/atmosphere/attendee.jpg",
+      "alt": "A smiling attendee at Devoxx Greece"
+    },
+    {
+      "src": "/images/atmosphere/speakers-on-stage.jpg",
+      "alt": "Two speakers on stage, one making a heart shape with her hands"
+    },
+    {
+      "src": "/images/atmosphere/hallway.jpg",
+      "alt": "An attendee walking through the Megaron foyer"
+    },
+    {
+      "src": "/images/hero-3.jpg",
+      "alt": "A full conference hall during a talk at Devoxx Greece"
+    }
   ],
   "dates": [
     {
@@ -122,6 +140,7 @@
   ],
   "benefits": {
     "photo": "/images/take-home.jpg",
+    "photoAlt": "The audience in the main hall of the Megaron, seen from the balcony",
     "items": [
       {
         "title": "Straight from the source",
