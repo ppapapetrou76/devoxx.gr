@@ -26,6 +26,8 @@ const ext = (href) => (isExternal(href) ? { target: '_blank', rel: 'noopener' } 
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(url(site.hero.image), Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@devoxxgr" />
     <link rel="icon" sizes="32x32" href={url('/images/favicon-32.png')} />
     <link rel="icon" sizes="192x192" href={url('/images/favicon-192.png')} />
     <link rel="apple-touch-icon" href={url('/images/apple-touch-icon.png')} />
@@ -69,7 +71,7 @@ const ext = (href) => (isExternal(href) ? { target: '_blank', rel: 'noopener' } 
           </div>
           {site.footer.map((col) => (
             <div>
-              <h2>{col.title}</h2>
+              <p class="footer-title">{col.title}</p>
               <ul>
                 {col.links.map((l) => <li><a href={url(l.href)} {...ext(l.href)}>{l.label}</a></li>)}
               </ul>
