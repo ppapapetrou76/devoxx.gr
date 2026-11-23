@@ -3,9 +3,24 @@ import Base from '../layouts/Base.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import home from '../data/home.json';
 import committee from '../data/committee.json';
+import site from '../data/site.json';
 import { url } from '../lib.js';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Devoxx Greece',
+  url: new URL(url('/'), Astro.site).href,
+  member: committee.map((m) => ({
+    '@type': 'Person',
+    name: m.name,
+    jobTitle: m.title,
+    image: new URL(url(m.photo), Astro.site).href,
+  })),
+};
 ---
-<Base title="Team" current="Team" description="The Devoxx Greece program committee and team.">
+<Base title="Program Committee" current="Team" description={`The ${committee.length} people from the developer community who choose the talks for ${site.name}, and the team behind the conference.`}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <section class="section section-grey">
     <div class="container">
       <SectionTitle caption={`${committee.length} people from the community who shape the program`} title="Program committee" level="h1" />
