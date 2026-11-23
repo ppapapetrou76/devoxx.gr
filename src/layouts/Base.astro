@@ -51,7 +51,7 @@ const ext = (href) => (isExternal(href) ? { target: '_blank', rel: 'noopener' } 
             <a href={url(item.href)} class:list={{ current: item.label === current }} {...ext(item.href)}>{item.label}</a>
           ))}
         </nav>
-        <a class="btn btn-gold header-cta" href={site.event.tickets} target="_blank" rel="noopener">Tickets</a>
+        <a class="btn btn-gold header-cta" href={site.event.tickets} target="_blank" rel="noopener">Buy tickets</a>
         <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
           <span></span><span></span><span></span>
         </button>
