@@ -1,6 +1,7 @@
 {
   "name": "Devoxx Greece 2027",
   "tagline": "A Developer Community Event",
+  "homeTitle": "Devoxx Greece 2027 – Developer Conference in Athens, 15–17 April",
   "description": "Devoxx Greece 2027 takes place 15-17 April 2027 at the Megaron Athens International Conference Centre. A 3-day developer conference, organised by developers for developers.",
   "logo": "/images/logo.png",
   "copyright": "Devoxx Greece is organised by SoftConf ~ Registered office Egnatias Str. 154, 54636 Thessaloniki in Greece",
@@ -159,6 +160,10 @@
         {
           "label": "TikTok",
           "href": "https://www.tiktok.com/@devoxx.greece"
+        },
+        {
+          "label": "Main Branch Podcast",
+          "href": "https://mainbranch.fm/"
         },
         {
           "label": "Newsletter",

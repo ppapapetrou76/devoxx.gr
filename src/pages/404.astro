@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import site from '../data/site.json';
+import { url } from '../lib.js';
+---
+<Base title="Page not found" description="This page does not exist on the Devoxx Greece website." noindex>
+  <section class="section">
+    <div class="container">
+      <SectionTitle caption="404" title="Page not found" level="h1" />
+      <div class="prose">
+        <p>The page you are looking for has moved or no longer exists. The site was rebuilt for {site.name}, so some older addresses have changed.</p>
+        <ul>
+          <li><a href={url('/')}>Home</a>: dates, tracks, tickets and venue</li>
+          <li><a href={url('/#tickets')}>Tickets</a></li>
+          <li><a href={url('/faq/')}>Frequently asked questions</a></li>
+          <li><a href={url('/team/')}>Program committee</a></li>
+          <li><a href={url('/sponsorships/')}>Sponsorships</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -129,7 +129,7 @@ const pad = (n) => String(n + 1).padStart(2, '0');
         <div class="mosaic-video">
           <iframe src={site.previous.videoEmbed} title="Devoxx Greece video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         </div>
-        {home.photos.map((p) => <img src={url(p)} alt="" loading="lazy" />)}
+        {home.photos.map((p) => <img src={url(p.src)} alt={p.alt} loading="lazy" />)}
       </div>
       <p class="link-row">
         <a href={site.previous.photos} target="_blank" rel="noopener">More photos on Flickr</a>
@@ -156,7 +156,7 @@ const pad = (n) => String(n + 1).padStart(2, '0');
   <!-- Why come -->
   <section class="section section-grey">
     <div class="container split">
-      <img class="split-photo" src={url(home.benefits.photo)} alt="" loading="lazy" />
+      <img class="split-photo" src={url(home.benefits.photo)} alt={home.benefits.photoAlt} loading="lazy" />
       <div>
         <SectionTitle caption="Why come" title="What you take home" />
         <ul class="benefits">
@@ -221,7 +221,7 @@ const pad = (n) => String(n + 1).padStart(2, '0');
         {committee.map((m) => (
           <li>
             <a href={url('/team/')}>
-              <img src={url(m.photo)} alt="" width="118" height="118" loading="lazy" />
+              <img src={url(m.photo)} alt={m.name} width="118" height="118" loading="lazy" />
               <strong>{m.name}</strong>
               <span class="caption">{m.title}</span>
             </a>
