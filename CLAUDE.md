@@ -15,7 +15,7 @@ npm install
 npm run dev        # http://localhost:4321
 npm run build      # into dist/; the only automated check there is
 npm run preview    # serve dist/
-npm run webp -- [--width N | --square N] <image>...   # resized .webp next to each image
+npm run webp -- [--width N | --square N] [--quality Q] <image>...   # resized .webp next to each image
 npm run fetch-assets   # re-downloads images listed in scripts/assets.txt that are missing
 ```
 
@@ -35,7 +35,7 @@ affected pages in `npm run dev`, at desktop and phone width (about 375 px).
 
 | Path | Holds |
 | --- | --- |
-| `src/data/site.json` | Site-wide: name, titles, event facts (`event`), announcement bar, hero, stats, menu, footer, contacts |
+| `src/data/site.json` | Site-wide: name, titles, event facts (`event`), announcement bar, hero, stats, menu, footer, `previous` (past edition videos and photos), `contact` emails |
 | `src/data/home.json` | Homepage sections, also reused by other pages: sessions, tracks, photos, key dates, tickets, sponsors, venue |
 | `src/data/committee.json` | Program committee (Team page and homepage) |
 | `src/data/pages.json` | Title, caption and meta description of each text page |
@@ -91,8 +91,10 @@ closing cards.
 - Exactly one `<h1>` per page: use `<SectionTitle level="h1" ...>` for the page heading, default
   `h2` for sections. Footer column titles are not headings.
 - Every content image has meaningful `alt` text; purely decorative images use `alt=""`.
-- Photos are referenced as `.webp` (see Images). The exception is the Open Graph / JSON-LD image
-  (`site.hero.image`), which is a JPG; `site.hero.photo` is the WebP shown on the page.
+- New photos are referenced as `.webp` (see Images). The Open Graph / JSON-LD image
+  (`site.hero.image`) is a JPG on purpose; `site.hero.photo` is the WebP shown on the page. The three
+  photos in `home.team` (`our-mission.jpg`, `dna.jpg`, `team.jpg`) have no WebP copy yet, so don't
+  point them at `.webp` without creating it first.
 - The homepage emits schema.org `Event` JSON-LD, with ticket offers built from `home.tickets` by
   `ticketOffers()`; the Team page emits `Person` markup. Keep them in step with the data.
 - Canonical, Open Graph and JSON-LD URLs are always `https` (`astro.config.mjs` forces it).

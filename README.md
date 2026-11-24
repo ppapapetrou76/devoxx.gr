@@ -12,7 +12,7 @@ npm run build          # production build into dist/
 
 The images are committed under `public/images/`. `npm run fetch-assets` downloads any image listed in `scripts/assets.txt` that is missing; the deploy workflow runs it as a safety net.
 
-New photos get a resized WebP copy, which is what the pages reference:
+New photos get a resized WebP copy, and the pages reference the `.webp`:
 
 ```sh
 npm run webp -- public/images/atmosphere/new-photo.jpg            # max 1200 px wide
