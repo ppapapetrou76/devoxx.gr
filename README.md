@@ -6,11 +6,19 @@ Static version of the Devoxx Greece website, built with [Astro](https://astro.bu
 
 ```sh
 npm install
-npm run fetch-assets   # first time only: downloads the site images into public/images/
 npm run dev            # http://localhost:4321
+npm run build          # production build into dist/
 ```
 
-Commit the downloaded `public/images/` folder. After that the script and `scripts/assets.txt` can be deleted.
+The images are committed under `public/images/`. `npm run fetch-assets` downloads any image listed in `scripts/assets.txt` that is missing; the deploy workflow runs it as a safety net.
+
+New photos get a resized WebP copy, and the pages reference the `.webp`:
+
+```sh
+npm run webp -- public/images/atmosphere/new-photo.jpg            # max 1200 px wide
+npm run webp -- --width 1920 public/images/hero-4.jpg             # hero photos
+npm run webp -- --square 240 public/images/committee/jane-doe.jpg # committee photos
+```
 
 ## Where things live
 
@@ -36,7 +44,6 @@ Common edits:
 ## Deploy
 
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to GitHub Pages.
-In the repository settings, set **Pages → Source** to **GitHub Actions**.
+In the repository settings, **Pages → Source** must be **GitHub Actions**.
 
-Until the custom domain is switched, the site is served from `https://softconf.github.io/devoxx.gr/`.
-To go live on `devoxx.gr`, add the custom domain under **Settings → Pages** and point the DNS records at GitHub Pages.
+The site is live on `https://devoxx.gr`, served by GitHub Pages behind Cloudflare.
