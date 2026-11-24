@@ -3,7 +3,7 @@
 The Devoxx Greece conference website (currently the 2027 edition, 15–17 April 2027, Megaron Athens).
 A fully static [Astro](https://astro.build) site: no CMS, no backend, no client framework. Content lives
 in JSON and HTML files; pages are `.astro` templates. Pushing to `main` deploys to production
-(`https://devoxx.gr`, GitHub Pages behind Cloudflare). The repo is `SoftConf/devoxx.gr`.
+(`https://devoxx.gr`, GitHub Pages behind Cloudflare). The repo is `ppapapetrou76/devoxx.gr` (formerly `SoftConf/devoxx.gr`).
 
 `README.md` has the "where things live" table for content editors. This file covers what you need to
 change the site safely.
