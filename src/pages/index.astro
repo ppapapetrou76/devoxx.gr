@@ -24,6 +24,12 @@ const jsonLd = {
   url: Astro.site,
 };
 const pad = (n) => String(n + 1).padStart(2, '0');
+// Ticket caption: point at the batch on sale, or at the next one while none is.
+const onSaleTier = home.tickets.tiers.find((t) => t.state === 'on-sale');
+const nextTier = home.tickets.tiers.find((t) => t.state === 'upcoming');
+const ticketsCaption = onSaleTier || !nextTier
+  ? 'The pass you can buy today is the highlighted one'
+  : `Next batch: ${nextTier.name}, ${nextTier.status[0].toLowerCase()}${nextTier.status.slice(1)}`;
 ---
 <Base current="Home">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -42,7 +48,9 @@ const pad = (n) => String(n + 1).padStart(2, '0');
         </ul>
         <p class="hero-pitch">{site.hero.pitch}</p>
         <div class="btn-row">
-          <a class="btn btn-gold" href={e.tickets} target="_blank" rel="noopener">Get tickets</a>
+          {onSaleTier
+            ? <a class="btn btn-gold" href={e.tickets} target="_blank" rel="noopener">Get tickets</a>
+            : <a class="btn btn-gold" href={url('/tickets/')}>Tickets</a>}
           <a class="btn btn-line-light" href={e.cfp} target="_blank" rel="noopener">Submit a talk</a>
         </div>
         <div class="countdown" data-countdown={e.countdownTo}>
@@ -171,7 +179,7 @@ const pad = (n) => String(n + 1).padStart(2, '0');
   <section class="section section-photo" id="tickets">
     <img class="bg" src={url(home.tickets.background)} alt="" loading="lazy" />
     <div class="container">
-      <SectionTitle caption="The pass you can buy today is the highlighted one" title="Tickets" light />
+      <SectionTitle caption={ticketsCaption} title="Tickets" light />
       <TicketTiers />
       <p class="tickets-more"><a href={url('/tickets/')}>Prices with VAT, team purchases and key dates</a></p>
     </div>

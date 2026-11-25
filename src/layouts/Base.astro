@@ -5,11 +5,14 @@ import '@fontsource/poppins/500.css';
 import '../styles/global.css';
 import '../styles/dark.css';
 import site from '../data/site.json';
+import home from '../data/home.json';
 import { url, isExternal } from '../lib.js';
 
 const { title, description = site.description, current = '', noindex = false } = Astro.props;
 const pageTitle = title ? `${title} – ${site.name}` : site.homeTitle;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// With no batch on sale, the header button leads to the Tickets page instead of Eventora.
+const onSale = home.tickets.tiers.some((t) => t.state === 'on-sale');
 const ext = (href) => (isExternal(href) ? { target: '_blank', rel: 'noopener' } : {});
 ---
 <!doctype html>
@@ -51,7 +54,9 @@ const ext = (href) => (isExternal(href) ? { target: '_blank', rel: 'noopener' } 
             <a href={url(item.href)} class:list={{ current: item.label === current }} {...ext(item.href)}>{item.label}</a>
           ))}
         </nav>
-        <a class="btn btn-gold header-cta" href={site.event.tickets} target="_blank" rel="noopener">Buy tickets</a>
+        {onSale
+          ? <a class="btn btn-gold header-cta" href={site.event.tickets} target="_blank" rel="noopener">Buy tickets</a>
+          : <a class="btn btn-gold header-cta" href={url('/tickets/')}>Tickets</a>}
         <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
           <span></span><span></span><span></span>
         </button>
