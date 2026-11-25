@@ -116,7 +116,7 @@ closing cards.
 
 - **Ticket batch changes:** in `home.json` → `tickets.tiers`, set `state` to `on-sale`, `upcoming` or
   `sold-out`, and update `status` and `cta`. Only `on-sale` gets a live buy button; `state` also
-  drives schema.org availability. Prices are written without VAT; the VAT rate is `tickets.vat` and
+  drives schema.org availability. While no tier is `on-sale`, the header and hero buttons link to `/tickets/` instead of Eventora, the Tickets page hides its Eventora button, and the homepage ticket caption names the next `upcoming` tier; all of this switches back once a tier is `on-sale`. Prices are written without VAT; the VAT rate is `tickets.vat` and
   `withVat()` computes the total where needed. Update `site.announcement` to match, and the FAQ prices
   if they changed.
 - **Key dates:** `home.dates`; `done: true` marks a date as passed (gold marker on the timeline).

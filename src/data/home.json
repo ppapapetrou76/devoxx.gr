@@ -175,13 +175,13 @@
         "name": "Super Early",
         "caption": "3 day conference ticket. Our super early bird at an extremely low price for our faithful believers and supporters.",
         "price": "180",
-        "state": "on-sale",
-        "status": "On sale now",
+        "state": "sold-out",
+        "status": "Sold out",
         "extra": [
           "Only 100 tickets available",
           "No refund"
         ],
-        "cta": "Join now!",
+        "cta": "Sold out",
         "validFrom": "2026-10-15"
       },
       {

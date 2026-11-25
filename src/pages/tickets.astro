@@ -8,6 +8,7 @@ import { url, withVat } from '../lib.js';
 
 const e = site.event;
 const { tiers, vat } = home.tickets;
+const onSale = tiers.some((t) => t.state === 'on-sale');
 const ticketDates = home.dates.filter((d) => /ticket|registration|Devoxx Greece/i.test(d.what));
 ---
 <Base
@@ -67,7 +68,7 @@ const ticketDates = home.dates.filter((d) => /ticket|registration|Devoxx Greece/
           </li>
         ))}
       </ol>
-      <p class="btn-row tickets-cta"><a class="btn btn-gold" href={e.tickets} target="_blank" rel="noopener">Buy tickets on Eventora</a> <a class="btn btn-ink" href={e.newsletter} target="_blank" rel="noopener">Get an email when each batch opens</a></p>
+      <p class="btn-row tickets-cta">{onSale && <a class="btn btn-gold" href={e.tickets} target="_blank" rel="noopener">Buy tickets on Eventora</a>} <a class="btn btn-ink" href={e.newsletter} target="_blank" rel="noopener">Get an email when each batch opens</a></p>
     </div>
   </section>
 </Base>
